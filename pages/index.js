@@ -21,9 +21,9 @@ export default function Home() {
     };
   },[text]);
 
-  const handleRemove = () =>{
+  const handleRemove = (index) =>{
     const newArray = [...array];
-    newArray.splice(array,1 );
+    newArray.splice(index,1 );
     setArray(newArray);
   };
 
@@ -42,10 +42,10 @@ export default function Home() {
           </form>
           <button onClick={handleAdd}>追加</button>
           <ul>
-            {array.map(item => {
-              return <div>
-                <li key ={item}>{item}</li>
-                <button onClick={handleRemove}>削除</button>
+            {array.map((item,index) => {
+              return <div key={index} className={styles.todoRemove}>
+                <li>{item}</li>
+                <button onClick={() => handleRemove(index)}>削除</button>
                 </div>
             })}
           </ul>
