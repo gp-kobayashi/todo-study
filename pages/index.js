@@ -13,11 +13,19 @@ export default function Home() {
   }
   
   const handleAdd = useCallback(() =>{
-    setArray((prevArray) =>{
-      const newArray = [...prevArray,text]
-      return newArray;
-    });
+    if (text.length > 0){
+      setArray((prevArray) =>{
+        const newArray = [...prevArray,text]
+        return newArray;
+      });
+    };
   },[text]);
+
+  const handleRemove = () =>{
+    const newArray = [...array];
+    newArray.splice(array,1 );
+    setArray(newArray);
+  };
 
   return (
     <div className={styles.container}>
@@ -37,7 +45,7 @@ export default function Home() {
             {array.map(item => {
               return <div>
                 <li key ={item}>{item}</li>
-                <button>削除</button>
+                <button onClick={handleRemove}>削除</button>
                 </div>
             })}
           </ul>
