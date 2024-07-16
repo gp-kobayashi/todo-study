@@ -27,3 +27,25 @@
   margin: 5px;
   border-radius: 3px;
 }
+
+.todoRemove {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.todoRemove li{
+  list-style: none;
+  width: 80%;
+  border-bottom: 1px black solid;
+  border-left: 5px orange solid;
+}
+
+.todoRemove button{
+  background-color: gray;
+  color: beige;
+  width: 20%;
+  font-size: 15px;
+  margin: 5px;
+  border-radius: 3px;
+}
