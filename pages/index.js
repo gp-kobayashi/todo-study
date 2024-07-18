@@ -13,11 +13,19 @@ export default function Home() {
   }
   
   const handleAdd = useCallback(() =>{
-    setArray((prevArray) =>{
-      const newArray = [...prevArray,text]
-      return newArray;
-    });
+    if (text.length > 0){
+      setArray((prevArray) =>{
+        const newArray = [...prevArray,text]
+        return newArray;
+      });
+    };
   },[text]);
+
+  const handleRemove = (index) =>{
+    const newArray = [...array];
+    newArray.splice(index,1 );
+    setArray(newArray);
+  };
 
   return (
     <div className={styles.container}>
@@ -34,10 +42,10 @@ export default function Home() {
           </form>
           <button onClick={handleAdd}>追加</button>
           <ul>
-            {array.map(item => {
-              return <div>
-                <li key ={item}>{item}</li>
-                <button>削除</button>
+            {array.map((item,index) => {
+              return <div key={index} className={styles.todoRemove}>
+                <li>{item}</li>
+                <button onClick={() => handleRemove(index)}>削除</button>
                 </div>
             })}
           </ul>
