@@ -30,7 +30,7 @@ const handleRemove = (index) =>{
 
 const handleSubmit = (e)=> {
     handleAdd();
-    e.preventDedault();
+    e.preventDefault();
   }; 
     
   return (
