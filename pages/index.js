@@ -18,15 +18,21 @@ export default function Home() {
         const newArray = [...prevArray,text]
         return newArray;
       });
+      setText("")
     };
   },[text]);
 
-  const handleRemove = (index) =>{
+const handleRemove = (index) =>{
     const newArray = [...array];
     newArray.splice(index,1 );
     setArray(newArray);
   };
 
+const handleSubmit = (e)=> {
+    handleAdd();
+    e.preventDefault();
+  }; 
+    
   return (
     <div className={styles.container}>
       <Head>
@@ -37,10 +43,10 @@ export default function Home() {
       <main className={styles.main}>
         <h1>TODOリスト</h1>
         <div className={styles.todo}>
-          <form>
-            <input type='text' value={text} onChange={handleChange}/>
+          <form onSubmit={handleSubmit} >
+            <input  type='text' value={text} onChange={handleChange}/>
           </form>
-          <button onClick={handleAdd}>追加</button>
+          <button  onClick={handleAdd}>追加</button>
           <ul>
             {array.map((item,index) => {
               return <div key={index} className={styles.todoRemove}>
